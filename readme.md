@@ -1,3 +1,9 @@
+Install client
+
+```
+make install
+```
+
 Initiate environment
 
 ```sh

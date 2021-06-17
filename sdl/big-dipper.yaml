@@ -21,12 +21,10 @@ services:
       - "ROOT_URL=http://localhost"
       - "MONGO_URL=mongodb://mongo:27017/meteor"
       - "PORT=3000"
-      - 'METEOR_SETTINGS={"public":{"chainName":"Akash Edgenet","chainId":"edgenet-6","gtm":false,"slashingWindow":10000,"uptimeWindow":250,"initialPageSize":30,"secp256k1":false,"bech32PrefixAccAddr":"akash","bech32PrefixAccPub":"akashpub","bech32PrefixValAddr":"akashvaloper","bech32PrefixValPub":"akashvaloperpub","bech32PrefixConsAddr":"akashvalcons","bech32PrefixConsPub":"akashvalconspub","bondDenom":"uakt","powerReduction":1000000,"coins":[{"denom":"uakt","displayName":"AKT","fraction":1000000}],"modules":{"supply":true,"minting":false,"gov":true},"gasPrice":0.02,"coingeckoId":false},"remote":{"rpc":"http://147.75.195.69:26657","lcd":"http://147.75.199.31:1317"},"debug":{"startTimer":true},"params":{"startHeight":0,"defaultBlockTime":5000,"validatorUpdateWindow":300,"blockInterval":15000,"consensusInterval":1000,"statusInterval":7500,"signingInfoInterval":1800000,"proposalInterval":5000,"missedBlocksInterval":60000,"delegationInterval":900000}}'
+      - 'METEOR_SETTINGS={"public":{"chainName":"Akash Edgenet","chainId":"akashnet-2","gtm":false,"slashingWindow":10000,"uptimeWindow":250,"initialPageSize":30,"secp256k1":false,"bech32PrefixAccAddr":"akash","bech32PrefixAccPub":"akashpub","bech32PrefixValAddr":"akashvaloper","bech32PrefixValPub":"akashvaloperpub","bech32PrefixConsAddr":"akashvalcons","bech32PrefixConsPub":"akashvalconspub","bondDenom":"uakt","powerReduction":1000000,"coins":[{"denom":"uakt","displayName":"AKT","fraction":1000000}],"modules":{"supply":true,"minting":false,"gov":true},"gasPrice":0.02,"coingeckoId":false},"remote":{"rpc":"http://135.181.60.250:26657","lcd":"http://135.181.60.250:1317"},"debug":{"startTimer":true},"params":{"startHeight":0,"defaultBlockTime":5000,"validatorUpdateWindow":300,"blockInterval":15000,"consensusInterval":1000,"statusInterval":7500,"signingInfoInterval":1800000,"proposalInterval":5000,"missedBlocksInterval":60000,"delegationInterval":900000}}'
     expose:
       - port: 3000
         as: 80
-        accept:
-          - "edgenet.decloud.bigdipper.live"
         to:
           - global: true
 
@@ -37,7 +35,7 @@ profiles:
         cpu:
           units: 0.6 
         memory:
-          size: 512Mi
+          size: 1Gi
         storage:
           size: 1Gi
     mongo:
@@ -45,15 +43,16 @@ profiles:
         cpu:
           units: 1
         memory:
-          size: 1Gi
+          size: 2Gi
         storage:
           size: 2Gi
   placement:
-    primary:
-      # datacenter: equinix-metal-ams
+    akash:
+      attributes:
+        host: akash
       signedBy:
         anyOf:
-          - "akash1f9n3ky0zhxxh4evcn48qvq2h20cyxk9l59jcvp"
+          - "akash1365yvmc4s7awdyj3n2sav7xfx76adc6dnmlx63"
       pricing:
         web:
           denom: uakt
@@ -64,11 +63,11 @@ profiles:
 
 deployment:
   web:
-    primary:
+    akash:
       profile: web
-      count: 1
+      count: 2
   mongo:
-    primary:
+    akash:
       profile: mongo
       count: 1
 

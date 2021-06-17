@@ -7,10 +7,12 @@ export AKASH_DSEQ=$(\
   akash query deployment list -o json \
   | jq -Mr '.deployments[].deployment.deployment_id.dseq' \
   | sort -rn \
-  | head -1  \
+  | head -1
 )
 
-# export AKASH_DSEQ=2
+if [ -z "$AKASH_DSEQ" ]; then
+  export AKASH_DSEQ=1
+fi
 
 incdseq() {
   ((AKASH_DSEQ++))

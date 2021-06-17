@@ -4,6 +4,8 @@ Initiate environment
 source env.sh
 ```
 
+_note: once account is set up, `source demo.sh` instead for `$AKASH_DSEQ`, `$AKASH_OWNER` utilities._
+
 Add key if necessary
 
 ```sh

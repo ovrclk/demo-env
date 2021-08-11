@@ -26,10 +26,10 @@ profiles:
         datacenter: equinix-metal-sjc1
         host: akash
         generation: mn2-ng
-        # host: akash
-      # signedBy:
-        # anyOf:
-        #   - "akash1365yvmc4s7awdyj3n2sav7xfx76adc6dnmlx63"
+        host: akash
+      signedBy:
+        anyOf:
+          - "akash1365yvmc4s7awdyj3n2sav7xfx76adc6dnmlx63"
       pricing:
         web:
           denom: uakt

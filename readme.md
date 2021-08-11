@@ -1,10 +1,19 @@
-Install client
+## Setup
+
+### Download project
+
+```sh
+https://github.com/ovrclk/demo-env.git demo
+cd demo
+```
+
+### Install `akash` client
 
 ```
 make install
 ```
 
-Initiate environment
+### Initiate environment
 
 ```sh
 source env.sh
@@ -12,84 +21,97 @@ source env.sh
 
 _note: once account is set up, `source demo.sh` instead for `$AKASH_DSEQ`, `$AKASH_OWNER` utilities._
 
-Add key if necessary
+### Add key if necessary
 
 ```sh
 akash keys add demo --recover
 ```
 
-View balance
+### View balance
 ```sh
 akash query bank balances $(akash keys show deploy -a)
 ```
 
-Create client certificate
+### Create client certificate
+
 ```sh
 akash tx cert create client
 ```
 
-Query providers
+## Run commands
+
+### Query providers
 ```sh
 akash query provider list
 ```
 
-Get provider status
+### Get provider status
+
 ```sh
 akash provider status $address
 ```
 
-Create auditor key
+### Create auditor key
+
 ```sh
 akash keys add audit
 ```
 
-Send tokens to auditor
+### Send tokens to auditor
 ```sh
 akash tx send deploy $(akash keys show -a audit) 1000000uakt
 ```
 
-Create audited attributes
+### Create audited attributes
 ```sh
 akash tx audit attr create akash15fv00ly8u33qr78r2llfu67uwd9rrhhxmgaldq datacenter equinix-metal-ams --from audit
 akash tx audit attr create akash1v9pdl8ryyvcuz44e249xnkuphzu6afae23fuln datacenter equinix-metal-ewr --from audit
 ```
 
-Create deployment
+## Deploy
+
+## Create deployment
 ```sh
 akash tx deployment create ff.yaml --dseq 1
 ```
 
-List deployment
+### List deployment
+
 ```sh
 akash query deployment list --owner $(akash keys show deploy -a)
 ```
 
-List bids
+### List bids
+
 ```sh
 akash query market bid list --owner $(akash keys show deploy -a)
 ```
 
-Create lease
+### Create lease
 ```sh
 akash tx market lease create --owner $(akash keys show deploy -a) --provider akash15fv00ly8u33qr78r2llfu67uwd9rrhhxmgaldq --dseq 1
 ```
 
-Send manifest
+### Send manifest
+
 ```sh
 akash provider send-manifest ff.yaml --dseq 1 --provider akash15fv00ly8u33qr78r2llfu67uwd9rrhhxmgaldq
 ```
 
-Get lease status
+### Get lease status
+
 ```sh
 akash provider lease-status --dseq 1 --provider akash15fv00ly8u33qr78r2llfu67uwd9rrhhxmgaldq
 ```
 
-Get lease logs
+### Get lease logs
+
 ```sh
 akash provider lease-logs --follow
 ```
 
-Close deployment
+### Close deployment
+
 ```sh
 akash tx deployment close --dseq 1
 ```

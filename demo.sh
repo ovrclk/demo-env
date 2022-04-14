@@ -5,6 +5,7 @@
 source env.sh
 
 # --owner
+unset AKASH_OUTPUT
 export AKASH_OWNER="$(akash keys show "$AKASH_FROM" -a)"
 
 # --dseq

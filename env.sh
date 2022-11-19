@@ -35,5 +35,5 @@ export AKASH_NET="$AKASH_NET_BASE/mainnet"
 export AKASH_NODE=http://akash.c29r3.xyz:80/rpc
 
 akash(){
-  ./bin/akash "$@"
+  ./bin/provider-services "$@"
 }
